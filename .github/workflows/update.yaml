@@ -32,8 +32,12 @@ jobs:
         #!/usr/bin/env bash
         KUSTOMIZATION1=./manifest/setup/kustomization.yaml
         KUSTOMIZATION2=./manifest/setup/kustomization.yaml
-        if [ -f "$KUSTOMIZATION1" ]; then rm "$KUSTOMIZATION1" fi
-        if [ -f "$KUSTOMIZATION2" ]; then rm "$KUSTOMIZATION2" fi
+        if [ -f "$KUSTOMIZATION1" ];
+          then rm "$KUSTOMIZATION1"
+        fi
+        if [ -f "$KUSTOMIZATION2" ];
+          then rm "$KUSTOMIZATION2"
+        fi
         sh -c 'cd ./manifests/setup && kustomization create --autodetect'
         sh -c 'cd ./manifests/deploy && kustomization create --autodetect'
     - name: Cleanup
