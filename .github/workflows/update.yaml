@@ -30,7 +30,10 @@ jobs:
     - name: Create kustomization.yaml
       run: |
         #!/usr/bin/env bash
-        rm ./manifests/setup/kustomization.yaml ./manifests/deploy/kustomization.yaml
+        KUSTOMIZATION1=./manifest/setup/kustomization.yaml
+        KUSTOMIZATION2=./manifest/setup/kustomization.yaml
+        if [ -f "$KUSTOMIZATION1" ]; then rm "$KUSTOMIZATION1"
+        if [ -f "$KUSTOMIZATION2" ]; then rm "$KUSTOMIZATION2"
         sh -c 'cd ./manifests/setup && kustomization create --autodetect'
         sh -c 'cd ./manifests/deploy && kustomization create --autodetect'
     - name: Cleanup
