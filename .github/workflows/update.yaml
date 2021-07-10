@@ -38,6 +38,7 @@ jobs:
         if [ -f "$KUSTOMIZATION2" ];
           then rm "$KUSTOMIZATION2"
         fi
+        sh -c 'ls -lah'
         sh -c 'cd manifests/setup && kustomization create --autodetect'
         sh -c 'cd manifests/deploy && kustomization create --autodetect'
     - name: Cleanup
