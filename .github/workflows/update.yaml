@@ -24,7 +24,7 @@ jobs:
       run: ./build.sh example.jsonnet
     - name: Create kustomization
       uses: imranismail/setup-kustomize@v1
-      run: |
+    - run: |
         #!/usr/bin/env bash
         KUSTOMIZATION1=./manifest/setup/kustomization.yaml
         KUSTOMIZATION2=./manifest/setup/kustomization.yaml
