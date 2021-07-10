@@ -1,6 +1,4 @@
-<div align="center">
 # kube-prometheus
-</div>
 
 ## Overview
 
