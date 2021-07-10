@@ -22,12 +22,8 @@ jobs:
       run: jb update
     - name: Run build script
       run: ./build.sh example.jsonnet
-  create-kustomization:
-    runs-on: ubuntu-latest
-    container: deck15/kubeval-tools:latest
-    needs: update
-    steps:
-    - name: Create kustomization.yaml
+    - name: Create kustomization
+      uses: imranismail/setup-kustomize@v1
       run: |
         #!/usr/bin/env bash
         KUSTOMIZATION1=./manifest/setup/kustomization.yaml
@@ -38,9 +34,8 @@ jobs:
         if [ -f "$KUSTOMIZATION2" ];
           then rm "$KUSTOMIZATION2"
         fi
-        sh -c 'ls -lah'
-        # sh -c 'cd manifests/setup && kustomization create --autodetect'
-        # sh -c 'cd manifests/deploy && kustomization create --autodetect'
+        sh -c 'cd manifests/setup && kustomization create --autodetect'
+        sh -c 'cd manifests/deploy && kustomization create --autodetect'
     - name: Cleanup
       run: rm -rf ./vendor
     - name: Create pull request
