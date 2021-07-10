@@ -39,8 +39,8 @@ jobs:
           then rm "$KUSTOMIZATION2"
         fi
         sh -c 'ls -lah'
-        sh -c 'cd manifests/setup && kustomization create --autodetect'
-        sh -c 'cd manifests/deploy && kustomization create --autodetect'
+        # sh -c 'cd manifests/setup && kustomization create --autodetect'
+        # sh -c 'cd manifests/deploy && kustomization create --autodetect'
     - name: Cleanup
       run: rm -rf ./vendor
     - name: Create pull request
