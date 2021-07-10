@@ -25,6 +25,7 @@ jobs:
   create-kustomization:
     runs-on: ubuntu-latest
     container: deck15/kubeval-tools:latest
+    needs: update
     steps:
     - name: Create kustomization.yaml
       run: |
