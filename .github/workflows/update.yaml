@@ -34,8 +34,8 @@ jobs:
         if [ -f "$KUSTOMIZATION2" ];
           then rm "$KUSTOMIZATION2"
         fi
-        sh -c 'cd manifests/setup && kustomization create --autodetect'
-        sh -c 'cd manifests/deploy && kustomization create --autodetect'
+        sh -c 'cd manifests/setup && kustomize create --autodetect'
+        sh -c 'cd manifests/deploy && kustomize create --autodetect'
     - name: Cleanup
       run: rm -rf ./vendor
     - name: Create pull request
