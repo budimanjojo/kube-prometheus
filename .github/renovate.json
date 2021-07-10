@@ -1,0 +1,30 @@
+{
+    "enabled": true,
+    "semanticCommits": "enabled",
+    "labels": ["renovatebot"],
+    "commitBody": "Signed-Off-by: Budiman JOJO <budimanjojo@gmail.com>",
+    "semanticCommitScope": "images",
+    "dependencyDashboard": true,
+    "dependencyDashboardTitle": "Renovate Dashboard",
+    "suppressNotifications": ["prIgnoreNotification"],
+    "rebaseWhen": "conflicted",
+    "packageRules": [
+        {
+            "matchUpdateTypes": [
+                "minor",
+                "patch",
+                "pin",
+                "digest"
+            ],
+            "automerge": true
+        },
+        {
+            "matchUpdateTypes": ["major"],
+            "addLabels": [ "dep/major"]
+        },
+        {
+            "matchUpdateTypes": ["minor", "patch"],
+            "addLabels": [ "dep/minor"]
+        }
+    ]
+}

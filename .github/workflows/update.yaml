@@ -1,0 +1,49 @@
+name: Update to latest version
+
+on:
+  schedule:
+  - cron: '00 12 * * 1'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        go-version: 1.16
+    - name: Install tools
+      run: |
+        go get github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
+        go get github.com/brancz/gojsontoyaml
+        go get github.com/google/go-jsonnet/cmd/jsonnet
+    - name: Run jb update
+      run: jb update
+    - name: Run build script
+      run: ./build.sh example.jsonnet
+  create-kustomization:
+    runs-on: ubuntu-latest
+    container: deck15/kubeval-tools:latest
+    steps:
+    - name: Create kustomization.yaml
+      run: |
+        #!/usr/bin/env bash
+        rm ./manifests/setup/kustomization.yaml ./manifests/deploy/kustomization.yaml
+        sh -c 'cd ./manifests/setup && kustomization create --autodetect'
+        sh -c 'cd ./manifests/deploy && kustomization create --autodetect'
+    - name: Cleanup
+      run: rm -rf ./vendor
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        delete-branch: true
+        title: "[bot] Automated update"
+        signoff: false
+        committer: Github <noreply@github.com>
+        author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+        body: |
+          This is an automated update to manifests and jsonnet dependencies from CI.
+
+          Configuration of the workflow is located in `.github.com/workflows/update.yaml`
+        labels: bot/update
