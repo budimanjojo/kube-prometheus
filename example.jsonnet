@@ -41,11 +41,11 @@ local kp =
           receivers:
           - name: Default
             webhook_configs:
-            - url: "http://alertmanager-notifier-svc.monitoring.svc.cluster.local:8899/alert"
+            - url: "http://alertmanager-notifier-svc.monitoring-system.svc.cluster.local:8899/alert"
           - name: Watchdog
           - name: Critical
             webhook_configs:
-            - url: "http://alertmanager-notifier-svc.monitoring.svc.cluster.local:8899/alert"
+            - url: "http://alertmanager-notifier-svc.monitoring-system.svc.cluster.local:8899/alert"
           route:
             group_by:
             - namespace
