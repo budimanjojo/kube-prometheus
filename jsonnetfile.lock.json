@@ -38,7 +38,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "2a6bdb7df17539b27869bab8b04eab0cc69a7abb",
+      "version": "a20c679492aae363414dce23bc63da09cf8a7287",
       "sum": "GRf2GvwEU4jhXV+JOonXSZ4wdDv8mnHBPCQ6TUVd+g8="
     },
     {
@@ -59,8 +59,8 @@
           "subdir": ""
         }
       },
-      "version": "e15ab56a4eea721d1e958888fd13c4b95af4d17d",
-      "sum": "voj/Pfit89sI+xBCyFV8oEV4UgnsaJZ2VrOU7s9jZe8="
+      "version": "d0d7d5324f4d5333ee47e1895e726fe44bcb7094",
+      "sum": "wQw1hzPBgZPKcdoBBFmlnimOUrPSrfwejVpzyV47Hwg="
     },
     {
       "source": {
@@ -99,7 +99,7 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "e8b58191b586d23c3a19bbf045c78630b568b29b",
+      "version": "557dbd1a099c539e44b10a7f0c13a48a755c5bde",
       "sum": "e/4y/phKZ+cCDPCW6WAwSaO9kJk1TyyDwcR+/f9qkrQ="
     },
     {
