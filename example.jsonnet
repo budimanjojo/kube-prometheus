@@ -18,7 +18,7 @@ local kp =
       },
       prometheus+: {
         replicas: 1,
-        namespaces+: ['ingress-system'],
+        namespaces+: ['ingress-system', 'flux-system'],
       },
       alertmanager+: {
         config: |||
