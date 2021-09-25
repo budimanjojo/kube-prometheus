@@ -1,6 +1,5 @@
 local kp =
   (import 'kube-prometheus/main.libsonnet') +
-  (import 'kube-prometheus/addons/strip-limits.libsonnet') +
   // Uncomment the following imports to enable its patches
   // (import 'kube-prometheus/addons/anti-affinity.libsonnet') +
   // (import 'kube-prometheus/addons/managed-cluster.libsonnet') +
@@ -66,6 +65,30 @@ local kp =
       },
     },
   };
+
+// disable CPUThrottlingHigh alert
+local filter = {
+  kubernetesControlPlane+: {
+    prometheusRule+: {
+      spec+: {
+        groups: std.map(
+          function(group)
+            if group.name == 'kubernetes-resources' then
+              group {
+                rules: std.filter(
+                  function(rule)
+                    rule.alert != 'CPUThrottlingHigh',
+                  group.rules
+                ),
+              }
+            else
+              group,
+          super.groups
+        ),
+      };
+    };
+  };
+};
 
 { 'setup/0namespace-namespace': kp.kubePrometheus.namespace } +
 {
