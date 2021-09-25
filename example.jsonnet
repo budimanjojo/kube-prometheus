@@ -85,9 +85,9 @@ local filter = {
               group,
           super.groups
         ),
-      };
-    };
-  };
+      },
+    },
+  },
 };
 
 { 'setup/0namespace-namespace': kp.kubePrometheus.namespace } +
