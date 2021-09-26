@@ -16,6 +16,7 @@ These are the changes in [example.jsonnet](./example.jsonnet) file from the upst
 - Added my own alertmanager config file to be able to send notification to Telegram using [alertmanager-notifier](https://github.com/ix-ai/alertmanager-notifier)
 - Added `kustomization.yaml` file so I can source it to my flux managed [home cluster](https://github.com/budimanjojo/home-cluster)
 - Alertmanager and prometheus deployment replicas set to 1
+- Disabled `CPUThrottlingHigh` alert
 
 ---
 
