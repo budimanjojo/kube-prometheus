@@ -50,5 +50,5 @@ jobs:
         body: |
           This is an automated update to manifests and jsonnet dependencies from CI.
 
-          Configuration of the workflow is located in `.github.com/workflows/update.yaml`
+          Configuration of the workflow is located in `.github/workflows/update.yaml`
         labels: bot/update
