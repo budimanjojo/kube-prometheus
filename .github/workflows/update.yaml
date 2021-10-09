@@ -27,7 +27,7 @@ jobs:
     - run: |
         #!/usr/bin/env bash
         KUSTOMIZATION1=./manifest/setup/kustomization.yaml
-        KUSTOMIZATION2=./manifest/setup/kustomization.yaml
+        KUSTOMIZATION2=./manifest/deploy/kustomization.yaml
         if [ -f "$KUSTOMIZATION1" ];
           then rm "$KUSTOMIZATION1"
         fi
