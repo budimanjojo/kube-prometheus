@@ -38,7 +38,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "17eca514f990530c411c2e9411af5213dd4bd224",
+      "version": "460ba73ba5c736f2e60c023f4e0de556eaa4574c",
       "sum": "U34Nd1ViO2LZ3D8IzygPPRfUcy6zOgCnTMVHZ+9O/QE="
     },
     {
@@ -69,7 +69,7 @@
           "subdir": "lib/promgrafonnet"
         }
       },
-      "version": "8dc2c0d69f762d943c5bfbdcc17645e346d610ca",
+      "version": "99b12873277982d0cba9d0a469fd1ec398e0b31d",
       "sum": "zv7hXGui6BfHzE9wPatHI/AGZa4A2WKo6pq7ZdqBsps="
     },
     {
@@ -99,8 +99,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "297af9d438c00e57e9eee3a4bf8dbe50667b5d4e",
-      "sum": "0+Y/oeh1H9akWtmtrZ9eRr/+gyN2betffDGk518e9xo="
+      "version": "70aa6619e6d5d16c778343a995943083f15e7b63",
+      "sum": "KeGm33GVqVmolYAtlvswR9dvFKHyZMIKNnKJ/1peJGc="
     },
     {
       "source": {
