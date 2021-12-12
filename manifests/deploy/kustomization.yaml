@@ -22,8 +22,6 @@ resources:
 - kube-state-metrics-service.yaml
 - kube-state-metrics-serviceAccount.yaml
 - kube-state-metrics-serviceMonitor.yaml
-- kubernetes-kubeControllerManagerPrometheusDiscoveryService.yaml
-- kubernetes-kubeSchedulerPrometheusDiscoveryService.yaml
 - kubernetes-prometheusRule.yaml
 - kubernetes-serviceMonitorApiserver.yaml
 - kubernetes-serviceMonitorCoreDNS.yaml
