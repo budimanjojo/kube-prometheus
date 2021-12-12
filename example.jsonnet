@@ -40,9 +40,6 @@ local kp =
       common+: {
         namespace: 'monitoring-system',
       },
-      kubePrometheus+: {
-        platform: 'kubeadm'
-      },
       prometheus+: {
         replicas: 1,
         namespaces+: ['ingress-system', 'flux-system'],
