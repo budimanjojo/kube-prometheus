@@ -42,7 +42,7 @@ local kp =
       },
       prometheus+: {
         replicas: 1,
-        namespaces+: ['ingress-system', 'flux-system', 'rook-ceph'],
+        namespaces: [],
       },
       alertmanager+: {
         config: |||
