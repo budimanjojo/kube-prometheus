@@ -11,7 +11,7 @@
     "packageRules": [
         {
             "matchPackageNames": "kube-prometheus",
-            "versioning": "regex:^release-v?(?<major>\\d+)\\.(?<minor>\\d+)[\\.\\-_?](?<patch>[\\d+]?)$"
+            "versioning": "regex:^release-v?(?<major>\\d+)\\.(?<minor>\\d+)[\\.\\-_]?(?<patch>[\\d+]?)$"
         },
         {
             "matchUpdateTypes": [
