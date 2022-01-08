@@ -10,10 +10,6 @@
     "rebaseWhen": "conflicted",
     "packageRules": [
         {
-            "matchPackageNames": "kube-prometheus",
-            "versioning": "regex:^release-v?(?<major>\\d+)\\.(?<minor>\\d+)$"
-        },
-        {
             "matchUpdateTypes": [
                 "minor",
                 "patch",
