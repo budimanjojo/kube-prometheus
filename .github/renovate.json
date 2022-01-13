@@ -8,6 +8,7 @@
     "dependencyDashboardTitle": "Renovate Dashboard",
     "suppressNotifications": ["prIgnoreNotification"],
     "rebaseWhen": "conflicted",
+    "enabledManagers": ["jsonnet-bundler"],
     "jsonnet-bundler": {
       "fileMatch": [
         "(^|/)jsonnetfile.json$"
