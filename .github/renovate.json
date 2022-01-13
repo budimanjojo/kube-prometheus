@@ -11,8 +11,7 @@
     "jsonnet-bundler": {
       "fileMatch": [
         "(^|/)jsonnetfile.json$"
-      ],
-      "datasource": "git-tags"
+      ]
     },
     "packageRules": [
         {
