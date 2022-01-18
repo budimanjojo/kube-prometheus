@@ -5,20 +5,11 @@ local filter = {
       spec+: {
         groups: std.map(
           function(group)
-            if group.name == 'kubernetes-resources' then
+            if group.name == 'kubernetes-resources' && group.name == 'kubernetes-system-kube-proxy' then
               group {
                 rules: std.filter(
                   function(rule)
                     rule.alert != 'CPUThrottlingHigh',
-                  group.rules
-                ),
-              }
-            else
-              group,
-            if group.name == 'kubernetes-system-kube-proxy' then
-              group {
-                rules: std.filter(
-                  function(rule)
                     rule.alert != 'KubeProxy',
                   group.rules
                 ),
