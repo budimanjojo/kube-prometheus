@@ -15,10 +15,6 @@ local filter = {
               }
             else
               group,
-          super.groups
-        ),
-        groups: std.map(
-          function(group)
             if group.name == 'kubernetes-system-kube-proxy' then
               group {
                 rules: std.filter(
