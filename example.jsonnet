@@ -17,6 +17,21 @@ local filter = {
               group,
           super.groups
         ),
+        groups: std.map(
+          function(group)
+            if group.name == 'kubernetes-system-kube-proxy' then
+              group {
+                rules: std.filter(
+                  function(rule)
+                    rule.alert != 'KubeProxy',
+                  group.rules
+                ),
+              }
+            else
+              group,
+          super.groups
+          ),
+        ),
       },
     },
   },
@@ -39,9 +54,6 @@ local kp =
     values+:: {
       common+: {
         namespace: 'monitoring-system',
-      },
-      kubernetesControlPlane+: {
-          kubeProxy: true,
       },
       prometheus+: {
         replicas: 1,
