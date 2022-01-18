@@ -30,7 +30,6 @@ local filter = {
             else
               group,
           super.groups
-          ),
         ),
       },
     },
