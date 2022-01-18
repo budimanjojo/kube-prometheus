@@ -5,11 +5,11 @@ local filter = {
       spec+: {
         groups: std.map(
           function(group)
-            if group.name == 'kubernetes-resources' && group.name == 'kubernetes-system-kube-proxy' then
+            if group.name == 'kubernetes-resources' then
               group {
                 rules: std.filter(
                   function(rule)
-                    rule.alert != 'CPUThrottlingHigh' && rule.alert != 'KubeProxy',
+                    rule.alert != 'CPUThrottlingHigh',
                   group.rules
                 ),
               }
@@ -17,6 +17,11 @@ local filter = {
               group,
           super.groups
         ),
+            super.groups
+            ).
+                  )
+                }
+        )
       },
     },
   },
@@ -35,9 +40,6 @@ local kp =
   // (import 'kube-prometheus/addons/custom-metrics.libsonnet') +
   // (import 'kube-prometheus/addons/external-metrics.libsonnet') +
   filter +
-  {
-    values+:: {
-      common+: {
         namespace: 'monitoring-system',
       },
       prometheus+: {
