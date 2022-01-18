@@ -16,6 +16,7 @@ These are the changes in [example.jsonnet](./example.jsonnet) file from the upst
 - Added `kustomization.yaml` file so I can source it to my flux managed [home cluster](https://github.com/budimanjojo/home-cluster)
 - Alertmanager and prometheus deployment replicas set to 1
 - Disabled `CPUThrottlingHigh` alert
+- Disabled `KubeProxyDown` alert
 
 ---
 
