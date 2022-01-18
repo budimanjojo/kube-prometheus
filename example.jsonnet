@@ -9,7 +9,7 @@ local filter = {
               group {
                 rules: std.filter(
                   function(rule)
-                    rule.alert != ['CPUThrottlingHigh', 'KubeProxy'],
+                    rule.alert != 'CPUThrottlingHigh' && rule.alert != 'KubeProxy',
                   group.rules
                 ),
               }
