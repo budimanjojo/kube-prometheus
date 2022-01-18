@@ -1,7 +1,6 @@
 // disable CPUThrottlingHigh alert
 local filter = {
   kubernetesControlPlane+: {
-    kubeProxy: true,
     prometheusRule+: {
       spec+: {
         groups: std.map(
@@ -40,6 +39,9 @@ local kp =
     values+:: {
       common+: {
         namespace: 'monitoring-system',
+      },
+      kubernetesControlPlane+: {
+          kubeProxy: true,
       },
       prometheus+: {
         replicas: 1,
