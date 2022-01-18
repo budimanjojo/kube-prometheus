@@ -32,7 +32,7 @@ local disable_kubeproxy_alert = {
               group {
                 rules: std.filter(
                   function(rule)
-                    rule.alert != 'KubeProxy',
+                    rule.componentName != 'KubeProxy',
                   group.rules
                 ),
               }
