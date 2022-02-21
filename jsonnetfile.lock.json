@@ -18,7 +18,7 @@
           "subdir": "contrib/mixin"
         }
       },
-      "version": "99018a77bea9a9d29962e5169876c64e02739c52",
+      "version": "31c8e3c7a50e008a62f52557197f880c4b6f2791",
       "sum": "W/Azptf1PoqjyMwJON96UY69MFugDA4IAYiKURscryc="
     },
     {
@@ -38,7 +38,7 @@
           "subdir": "grafana-builder"
         }
       },
-      "version": "b1b20b418d180490f8226bba1ce62743b40b790c",
+      "version": "03d32a72a2a0bf0ee00ffc853be5f07ad3bafcbe",
       "sum": "0KkygBQd/AFzUvVzezE4qF/uDYgrwUXVpZfINBti0oc="
     },
     {
@@ -58,7 +58,7 @@
           "subdir": "lib/promgrafonnet"
         }
       },
-      "version": "784e037504953992770bdc5c3b775ab91fc92238",
+      "version": "2b33b82dfe04e4b37d62008ead7a04272a0fb42d",
       "sum": "zv7hXGui6BfHzE9wPatHI/AGZa4A2WKo6pq7ZdqBsps="
     },
     {
