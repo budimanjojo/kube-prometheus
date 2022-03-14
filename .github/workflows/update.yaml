@@ -41,7 +41,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         delete-branch: true
-        title: "[bot] Automated update"
+        title: "chore: automated update"
         signoff: false
         committer: Github <noreply@github.com>
         author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
