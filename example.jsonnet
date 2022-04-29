@@ -63,7 +63,7 @@ local kp =
       prometheus+: {
         replicas: 1,
         resources+: {
-          limits: { memory: '2500Mi' },
+          limits: { memory: '3000Mi' },
         },
         namespaces+: ['ingress-system', 'flux-system', 'rook-ceph'],
       },
