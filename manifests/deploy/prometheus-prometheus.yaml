@@ -34,6 +34,8 @@ spec:
   probeSelector: {}
   replicas: 1
   resources:
+    limits:
+      memory: 2500Mi
     requests:
       memory: 400Mi
   ruleNamespaceSelector: {}
