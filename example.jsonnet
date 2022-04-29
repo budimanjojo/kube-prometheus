@@ -1,5 +1,5 @@
 // disable CPUThrottlingHigh alert
-local filter = {
+local disable_cputhrottlinghigh_alert = {
   kubernetesControlPlane+: {
     prometheusRule+: {
       spec+: {
@@ -17,18 +17,33 @@ local filter = {
               group,
           super.groups
         ),
-            super.groups
-            ).
-                  )
-                }
-        )
       },
     },
   },
 };
 
-local kp =
-  (import 'kube-prometheus/main.libsonnet') + filter;
+local disable_kubeproxy_alert = {
+  kubernetesControlPlane+: {
+    prometheusRule+: {
+      spec+: {
+        groups: std.map(
+          function(group)
+            if group.name == 'kubernetes-system-kube-proxy' then
+              group {
+                rules: std.filter(
+                  function(rule)
+                    rule.alert != 'KubeProxyDown',
+                  group.rules
+                ),
+              }
+            else
+              group,
+          super.groups
+        ),
+      },
+    },
+  },
+};
 
 local kp =
   (import 'kube-prometheus/main.libsonnet') +
@@ -39,7 +54,10 @@ local kp =
   // (import 'kube-prometheus/addons/static-etcd.libsonnet') +
   // (import 'kube-prometheus/addons/custom-metrics.libsonnet') +
   // (import 'kube-prometheus/addons/external-metrics.libsonnet') +
-  filter +
+  disable_kubeproxy_alert + disable_cputhrottlinghigh_alert +
+  {
+    values+:: {
+      common+: {
         namespace: 'monitoring-system',
       },
       prometheus+: {
