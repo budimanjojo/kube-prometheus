@@ -35,7 +35,7 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 2500Mi
+      memory: 3000Mi
     requests:
       memory: 400Mi
   ruleNamespaceSelector: {}
