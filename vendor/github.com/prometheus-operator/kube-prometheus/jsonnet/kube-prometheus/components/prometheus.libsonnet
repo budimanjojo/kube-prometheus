@@ -35,13 +35,13 @@ local defaults = {
       prometheusSelector: 'job="prometheus-' + defaults.name + '",namespace="' + defaults.namespace + '"',
       prometheusName: '{{$labels.namespace}}/{{$labels.pod}}',
       // TODO: remove `thanosSelector` after 0.10.0 release.
-      thanosSelector: '',
+      thanosSelector: 'job="thanos-sidecar"',
       thanos: {
         targetGroups: {
           namespace: defaults.namespace,
         },
         sidecar: {
-          selector: 'job="thanos-sidecar"',
+          selector: defaults.mixin._config.thanosSelector,
           thanosPrometheusCommonDimensions: 'namespace, pod',
         },
       },
@@ -94,10 +94,62 @@ function(params) {
     },
   },
 
+  networkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: p.service.metadata,
+    spec: {
+      podSelector: {
+        matchLabels: p._config.selectorLabels,
+      },
+      policyTypes: ['Egress', 'Ingress'],
+      egress: [{}],
+      ingress: [{
+        from: [{
+          podSelector: {
+            matchLabels: {
+              'app.kubernetes.io/name': 'prometheus',
+            },
+          },
+        }],
+        ports: std.map(function(o) {
+          port: o.port,
+          protocol: 'TCP',
+        }, p.service.spec.ports),
+      }, {
+        from: [{
+          podSelector: {
+            matchLabels: {
+              'app.kubernetes.io/name': 'grafana',
+            },
+          },
+        }],
+        ports: [{
+          port: 9090,
+          protocol: 'TCP',
+        }],
+      }] + (if p._config.thanos != null then
+              [{
+                from: [{
+                  podSelector: {
+                    matchLabels: {
+                      'app.kubernetes.io/name': 'thanos-query',
+                    },
+                  },
+                }],
+                ports: [{
+                  port: 10901,
+                  protocol: 'TCP',
+                }],
+              }] else []),
+    },
+  },
+
   serviceAccount: {
     apiVersion: 'v1',
     kind: 'ServiceAccount',
     metadata: p._metadata,
+    automountServiceAccountToken: false,
   },
 
   service: {
@@ -146,7 +198,9 @@ function(params) {
   clusterRole: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRole',
-    metadata: p._metadata,
+    metadata: p._metadata {
+      namespace:: null,
+    },
     rules: [
       {
         apiGroups: [''],
@@ -194,7 +248,9 @@ function(params) {
   clusterRoleBinding: {
     apiVersion: 'rbac.authorization.k8s.io/v1',
     kind: 'ClusterRoleBinding',
-    metadata: p._metadata,
+    metadata: p._metadata {
+      namespace:: null,
+    },
     roleRef: {
       apiGroup: 'rbac.authorization.k8s.io',
       kind: 'ClusterRole',

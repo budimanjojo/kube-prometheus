@@ -24,6 +24,16 @@
     {
       "source": {
         "git": {
+          "remote": "https://github.com/grafana/grafana.git",
+          "subdir": "grafana-mixin"
+        }
+      },
+      "version": "3eed09056849ab873b867b561b7ce580ef2c75ba",
+      "sum": "MkjR7zCgq6MUZgjDzop574tFKoTX2OBr7DTwm1K+Ofs="
+    },
+    {
+      "source": {
+        "git": {
           "remote": "https://github.com/grafana/grafonnet-lib.git",
           "subdir": "grafonnet"
         }
@@ -88,8 +98,8 @@
           "subdir": "jsonnet/kube-prometheus"
         }
       },
-      "version": "42ea595d60265b803ad460a971a7186488f6be7e",
-      "sum": "JIS68anxV6nP1FcufwRzOqxbX4ZX3BwQQdT5A2tbOQA="
+      "version": "4af90319f557da9b38db4e37d710d6d997ff4744",
+      "sum": "kJIVoJzzriX81zjuVnED4lR0CmZZLuPSg0F0eKeWOcM="
     },
     {
       "source": {
@@ -143,6 +153,16 @@
       "version": "41f1a8125e664985dd30674e5bdf6b683eff5d32",
       "sum": "ZjQoYhvgKwJNkg+h+m9lW3SYjnjv5Yx5btEipLhru88=",
       "name": "prometheus"
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/pyrra-dev/pyrra.git",
+          "subdir": "config/crd/bases"
+        }
+      },
+      "version": "70b3a1a1956425ee2f2f9b61eaf28be6cab8f383",
+      "sum": "GQ0GFKGdIWKx1b78VRs6jtC4SMqkBjT5jl65QUjPKK4="
     },
     {
       "source": {

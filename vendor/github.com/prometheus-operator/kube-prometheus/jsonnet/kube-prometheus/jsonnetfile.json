@@ -8,7 +8,17 @@
           "subdir": "grafana"
         }
       },
-      "version": "199e363523104ff8b3a12483a4e3eca86372b078"
+      "version": "d039275e4916aceae1c137120882e01d857787ac"
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/grafana/grafana",
+          "subdir": "grafana-mixin"
+        }
+      },
+      "version": "release-v9.0.0",
+      "name": "grafana-mixin"
     },
     {
       "source": {
@@ -26,7 +36,7 @@
           "subdir": "jsonnet/prometheus-operator"
         }
       },
-      "version": "release-0.53"
+      "version": "release-0.57"
     },
     {
       "source": {
@@ -35,7 +45,7 @@
           "subdir": "jsonnet/mixin"
         }
       },
-      "version": "release-0.53",
+      "version": "release-0.57",
       "name": "prometheus-operator-mixin"
     },
     {
@@ -45,7 +55,7 @@
           "subdir": ""
         }
       },
-      "version": "release-0.10"
+      "version": "release-0.11"
     },
     {
       "source": {
@@ -54,7 +64,7 @@
           "subdir": "jsonnet/kube-state-metrics"
         }
       },
-      "version": "release-2.3"
+      "version": "release-2.5"
     },
     {
       "source": {
@@ -63,7 +73,7 @@
           "subdir": "jsonnet/kube-state-metrics-mixin"
         }
       },
-      "version": "release-2.3"
+      "version": "release-2.5"
     },
     {
       "source": {
@@ -81,7 +91,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "release-2.32",
+      "version": "release-2.36",
       "name": "prometheus"
     },
     {
@@ -91,8 +101,17 @@
           "subdir": "doc/alertmanager-mixin"
         }
       },
-      "version": "release-0.23",
+      "version": "release-0.24",
       "name": "alertmanager"
+    },
+    {
+      "source": {
+        "git": {
+          "remote": "https://github.com/pyrra-dev/pyrra.git",
+          "subdir": "config/crd/bases"
+        }
+      },
+      "version": "release-0.4"
     },
     {
       "source": {
@@ -101,7 +120,7 @@
           "subdir": "mixin"
         }
       },
-      "version": "release-0.23",
+      "version": "release-0.26",
       "name": "thanos-mixin"
     }
   ],
