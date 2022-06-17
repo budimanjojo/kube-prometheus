@@ -59,6 +59,7 @@ function(params) {
     apiVersion: 'v1',
     kind: 'ServiceAccount',
     metadata: g._metadata,
+    automountServiceAccountToken: false,
   },
 
   service: {
@@ -231,12 +232,25 @@ function(params) {
       mountPath: '/etc/grafana/provisioning/dashboards',
       readOnly: false,
     };
+    // A volume on /tmp is needed to let us use 'readOnlyRootFilesystem: true'
+    local pluginTmpVolume = {
+      name: 'tmp-plugins',
+      emptyDir: {
+        medium: 'Memory',
+      },
+    };
+    local pluginTmpVolumeMount = {
+      mountPath: '/tmp',
+      name: 'tmp-plugins',
+      readOnly: false,
+    };
 
     local volumeMounts =
       [
         storageVolumeMount,
         datasourcesVolumeMount,
         dashboardsVolumeMount,
+        pluginTmpVolumeMount,
       ] +
       [
         {
@@ -265,6 +279,7 @@ function(params) {
         storageVolume,
         datasourcesVolume,
         dashboardsVolume,
+        pluginTmpVolume,
       ] +
       [
         {
@@ -316,6 +331,11 @@ function(params) {
         },
       },
       resources: g._config.resources,
+      securityContext: {
+        capabilities: { drop: ['ALL'] },
+        allowPrivilegeEscalation: false,
+        readOnlyRootFilesystem: true,
+      },
     };
 
     {

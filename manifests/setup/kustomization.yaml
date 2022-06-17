@@ -13,5 +13,6 @@ resources:
 - prometheus-operator-clusterRole.yaml
 - prometheus-operator-clusterRoleBinding.yaml
 - prometheus-operator-deployment.yaml
+- prometheus-operator-networkPolicy.yaml
 - prometheus-operator-service.yaml
 - prometheus-operator-serviceAccount.yaml
