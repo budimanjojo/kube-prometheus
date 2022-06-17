@@ -35,6 +35,10 @@ local defaults = {
       source_matchers: ['severity = warning'],
       target_matchers: ['severity = info'],
       equal: ['namespace', 'alertname'],
+    }, {
+      source_matchers: ['alertname = InfoInhibitor'],
+      target_matchers: ['severity = info'],
+      equal: ['namespace'],
     }],
     route: {
       group_by: ['namespace'],
@@ -44,6 +48,7 @@ local defaults = {
       receiver: 'Default',
       routes: [
         { receiver: 'Watchdog', matchers: ['alertname = Watchdog'] },
+        { receiver: 'null', matchers: ['alertname = InfoInhibitor'] },
         { receiver: 'Critical', matchers: ['severity = critical'] },
       ],
     },
@@ -51,6 +56,7 @@ local defaults = {
       { name: 'Default' },
       { name: 'Watchdog' },
       { name: 'Critical' },
+      { name: 'null' },
     ],
   },
   replicas: 3,
@@ -97,6 +103,51 @@ function(params) {
     },
   },
 
+  networkPolicy: {
+    apiVersion: 'networking.k8s.io/v1',
+    kind: 'NetworkPolicy',
+    metadata: am.service.metadata,
+    spec: {
+      podSelector: {
+        matchLabels: am._config.selectorLabels,
+      },
+      policyTypes: ['Egress', 'Ingress'],
+      egress: [{}],
+      ingress: [
+        {
+          from: [{
+            podSelector: {
+              matchLabels: {
+                'app.kubernetes.io/name': 'prometheus',
+              },
+            },
+          }],
+          ports: std.map(function(o) {
+            port: o.port,
+            protocol: 'TCP',
+          }, am.service.spec.ports),
+        },
+        // Alertmanager cluster peer-to-peer communication
+        {
+          from: [{
+            podSelector: {
+              matchLabels: {
+                'app.kubernetes.io/name': 'alertmanager',
+              },
+            },
+          }],
+          ports: [{
+            port: 9094,
+            protocol: 'TCP',
+          }, {
+            port: 9094,
+            protocol: 'UDP',
+          }],
+        },
+      ],
+    },
+  },
+
   secret: {
     apiVersion: 'v1',
     kind: 'Secret',
@@ -115,6 +166,7 @@ function(params) {
     apiVersion: 'v1',
     kind: 'ServiceAccount',
     metadata: am._metadata,
+    automountServiceAccountToken: false,
   },
 
   service: {
