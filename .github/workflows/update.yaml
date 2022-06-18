@@ -51,3 +51,4 @@ jobs:
 
           Configuration of the workflow is located in `.github/workflows/update.yaml`
         labels: bot/update
+        base: ${{ github.head_ref }}
