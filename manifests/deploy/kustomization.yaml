@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - alertmanager-alertmanager.yaml
+- alertmanager-networkPolicy.yaml
 - alertmanager-prometheusRule.yaml
 - alertmanager-secret.yaml
 - alertmanager-service.yaml
@@ -11,6 +12,7 @@ resources:
 - blackbox-exporter-clusterRoleBinding.yaml
 - blackbox-exporter-configuration.yaml
 - blackbox-exporter-deployment.yaml
+- blackbox-exporter-networkPolicy.yaml
 - blackbox-exporter-service.yaml
 - blackbox-exporter-serviceAccount.yaml
 - blackbox-exporter-serviceMonitor.yaml
@@ -18,6 +20,7 @@ resources:
 - kube-state-metrics-clusterRole.yaml
 - kube-state-metrics-clusterRoleBinding.yaml
 - kube-state-metrics-deployment.yaml
+- kube-state-metrics-networkPolicy.yaml
 - kube-state-metrics-prometheusRule.yaml
 - kube-state-metrics-service.yaml
 - kube-state-metrics-serviceAccount.yaml
@@ -31,6 +34,7 @@ resources:
 - node-exporter-clusterRole.yaml
 - node-exporter-clusterRoleBinding.yaml
 - node-exporter-daemonset.yaml
+- node-exporter-networkPolicy.yaml
 - node-exporter-prometheusRule.yaml
 - node-exporter-service.yaml
 - node-exporter-serviceAccount.yaml
@@ -43,6 +47,7 @@ resources:
 - prometheus-adapter-clusterRoleServerResources.yaml
 - prometheus-adapter-configMap.yaml
 - prometheus-adapter-deployment.yaml
+- prometheus-adapter-networkPolicy.yaml
 - prometheus-adapter-podDisruptionBudget.yaml
 - prometheus-adapter-roleBindingAuthReader.yaml
 - prometheus-adapter-service.yaml
@@ -50,6 +55,7 @@ resources:
 - prometheus-adapter-serviceMonitor.yaml
 - prometheus-clusterRole.yaml
 - prometheus-clusterRoleBinding.yaml
+- prometheus-networkPolicy.yaml
 - prometheus-operator-prometheusRule.yaml
 - prometheus-operator-serviceMonitor.yaml
 - prometheus-prometheus.yaml

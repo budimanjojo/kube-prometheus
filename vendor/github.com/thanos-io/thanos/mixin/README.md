@@ -4,7 +4,7 @@
 
 This directory contains extensible and customizable monitoring definitons for Thanos. [Grafana](http://grafana.com/) dashboards, and [Prometheus rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) combined with documentation and scripts to provide easy monitoring experience for Thanos.
 
-You can find more about monitoring-mixins in [the design document](https://docs.google.com/document/d/1A9xvzwqnFVSOZ5fD3blKODXfsat5fg6ZhnKu9LK3lB4/edit#heading=h.gt9r2h2gklj3), and you could check out other examples like [Prometheus Mixin](https://github.com/prometheus/prometheus/tree/master/documentation/prometheus-mixin).
+You can find more about monitoring-mixins in [the design document](https://github.com/monitoring-mixins/docs/blob/master/design.pdf), and you can check out other examples like [Prometheus Mixin](https://github.com/prometheus/prometheus/tree/master/documentation/prometheus-mixin).
 
 The content of this project is written in [jsonnet](http://jsonnet.org/). This project could both be described as a package as well as a library.
 
@@ -88,6 +88,10 @@ This project is intended to be used as a library. You can extend and customize d
     selector: 'job=~".*thanos-query.*"',
     title: '%(prefix)sQuery' % $.dashboard.prefix,
   },
+  queryFrontend+:: {
+    selector: 'job=~".*thanos-query-frontend.*"',
+    title: '%(prefix)sQuery Frontend' % $.dashboard.prefix,
+  },
   store+:: {
     selector: 'job=~".*thanos-store.*"',
     title: '%(prefix)sStore' % $.dashboard.prefix,
@@ -106,10 +110,10 @@ This project is intended to be used as a library. You can extend and customize d
   },
   sidecar+:: {
     selector: 'job=~".*thanos-sidecar.*"',
+    thanosPrometheusCommonDimensions: 'namespace, pod',
     title: '%(prefix)sSidecar' % $.dashboard.prefix,
   },
-  // TODO(kakkoyun): Fix naming convention: bucketReplicate
-  bucket_replicate+:: {
+  bucketReplicate+:: {
     selector: 'job=~".*thanos-bucket-replicate.*"',
     title: '%(prefix)sBucketReplicate' % $.dashboard.prefix,
   },
