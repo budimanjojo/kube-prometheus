@@ -150,7 +150,7 @@
           "subdir": "documentation/prometheus-mixin"
         }
       },
-      "version": "3c0a100dec2950f23e91f7efbf8867750960807d",
+      "version": "9f1a3970b24e09bd65e189e39920652133a02b38",
       "sum": "APXOIP3B3dZ3Tyh7L2UhyWR8Vbf5+9adTLz/ya7n6uU=",
       "name": "prometheus"
     },
@@ -161,7 +161,7 @@
           "subdir": "config/crd/bases"
         }
       },
-      "version": "70b3a1a1956425ee2f2f9b61eaf28be6cab8f383",
+      "version": "f196bde417f1093239c0ab1fa70c62e8a298c8d1",
       "sum": "GQ0GFKGdIWKx1b78VRs6jtC4SMqkBjT5jl65QUjPKK4="
     },
     {
