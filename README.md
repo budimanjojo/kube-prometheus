@@ -17,6 +17,7 @@ These are the changes in [example.jsonnet](./example.jsonnet) file from the upst
 - Alertmanager and prometheus deployment replicas set to 1
 - Disabled `CPUThrottlingHigh` alert
 - Disabled `KubeProxyDown` alert
+- Allow ingress from `traefik` which is blocked by default with the latest `NetworkPolicy`
 
 ---
 
