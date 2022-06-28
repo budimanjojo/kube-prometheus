@@ -1,4 +1,27 @@
 // disable CPUThrottlingHigh alert
+local prometheus_allow_ingress = {
+  prometheus+: {
+    networkPolicy+: {
+      spec+: {
+        ingress+: [{
+          from: [{
+            podSelector: {
+              matchLabels: {
+                'app.kubernetes.io/name': 'traefik',
+              },
+            },
+            namespaceSelector: {
+              matchLabels: {
+                'kubernetes.io/metadata.name': 'ingress-system',
+              },
+            },
+          }],
+        }],
+      },
+    },
+  },
+};
+
 local disable_cputhrottlinghigh_alert = {
   kubernetesControlPlane+: {
     prometheusRule+: {
@@ -54,7 +77,7 @@ local kp =
   // (import 'kube-prometheus/addons/static-etcd.libsonnet') +
   // (import 'kube-prometheus/addons/custom-metrics.libsonnet') +
   // (import 'kube-prometheus/addons/external-metrics.libsonnet') +
-  disable_kubeproxy_alert + disable_cputhrottlinghigh_alert +
+  disable_kubeproxy_alert + disable_cputhrottlinghigh_alert + prometheus_allow_ingress +
   {
     values+:: {
       common+: {
