@@ -91,47 +91,6 @@ local kp =
         namespaces+: ['ingress-system', 'flux-system', 'rook-ceph'],
       },
       alertmanager+: {
-        config: |||
-          global:
-            resolve_timeout: 5m
-          inhibit_rules:
-          - equal:
-            - namespace
-            - alertname
-            source_match:
-              severity: critical
-            target_match_re:
-              severity: warning|info
-          - equal:
-            - namespace
-            - alertname
-            source_match:
-              severity: warning
-            target_match_re:
-              severity: info
-          receivers:
-          - name: Default
-            webhook_configs:
-            - url: "http://alertmanager-discord.monitoring-system.svc.cluster.local:9094"
-          - name: Watchdog
-          - name: Critical
-            webhook_configs:
-            - url: "http://alertmanager-discord.monitoring-system.svc.cluster.local:9094"
-          route:
-            group_by:
-            - namespace
-            group_interval: 5m
-            group_wait: 30s
-            receiver: Default
-            repeat_interval: 12h
-            routes:
-            - match:
-                alertname: Watchdog
-              receiver: Watchdog
-            - match:
-                severity: critical
-              receiver: Critical
-      |||,
         replicas: 1,
       },
     },
