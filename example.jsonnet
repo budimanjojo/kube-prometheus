@@ -88,7 +88,7 @@ local kp =
         resources+: {
           limits: { memory: '3000Mi' },
         },
-        namespaces+: ['ingress-system', 'flux-system', 'rook-ceph'],
+        namespaces+: ['ingress-system', 'flux-system', 'rook-ceph', 'kyverno'],
       },
       alertmanager+: {
         replicas: 1,
