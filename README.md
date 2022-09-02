@@ -1,3 +1,5 @@
+# Note: I don't use this anymore and am currently using the helm chart of `kube-prometheus-stack` instead.
+
 # kube-prometheus
 
 ## Overview
